@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [RequireComponent(typeof(Animator))]
 public class PlayerAnimation : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerAnimation : MonoBehaviour
         set{
             if(_animationState == value) return;
             _animationState = value;
-            Play(value);
+            PlayState(value);
         }
     }
     private AnimationState _animationState;
@@ -20,12 +21,7 @@ public class PlayerAnimation : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    private void Play(AnimationState currentState){
-        if(currentState == AnimationState.Shooting){
-            //PlayIdle + Kinematics To Gun
-            _animator.Play("Idle");
-            return;
-        }
+    private void PlayState(AnimationState currentState){
         if(currentState == AnimationState.Idle){
             _animator.Play("Idle");
         }
