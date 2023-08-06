@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityStandardAssets.Characters.ThirdPerson;
 [RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(ThirdPersonCharacter))]
 public class PlayerAgentMovement : MonoBehaviour
 {
     const float TIMER_DELAY = 1f;
@@ -16,15 +18,21 @@ public class PlayerAgentMovement : MonoBehaviour
         }
 
     } 
-    private Vector3 _target;
+    private ThirdPersonCharacter _thirdPersonCharacter;
     private NavMeshAgent _currentAgent;
+    private Vector3 _target;
     private bool _isMoving;
 
     void Awake(){
         _currentAgent = GetComponent<NavMeshAgent>();
+        _thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
+        _currentAgent.updateRotation = false;
         InvokeRepeating("CheckDestination", TIME_BETWEEN_EXECUTION, TIMER_DELAY);
     }
-
+    void Update(){
+        if(_isMoving == false) return;
+        _thirdPersonCharacter.Move(_currentAgent.desiredVelocity, false, false);
+    }
 
     public void CheckDestination(){
         Debug.Log($"IsMoving = {_isMoving}");
