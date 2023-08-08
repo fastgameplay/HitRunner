@@ -1,0 +1,102 @@
+{
+    "name": "Player",
+    "maps": [
+        {
+            "name": "PlayerPC",
+            "id": "dcaa14ac-0d8d-4010-a443-57f3f1a48614",
+            "actions": [
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "902bcefd-fd6e-4fe9-ad71-9427cd52ab7f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TapPosition",
+                    "type": "Value",
+                    "id": "34d686fd-237f-418d-942a-f443ba688aef",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "efc1498d-f058-4da8-8c3b-adf3f8204986",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f32a26be-d701-4346-8ac5-71b90c90c085",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TapPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "PlayerMobile",
+            "id": "a8d70603-b292-4c48-8c5a-83878a7cab32",
+            "actions": [
+                {
+                    "name": "Tap",
+                    "type": "Button",
+                    "id": "7862962c-6f9d-4466-8036-e6760f985751",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TapPosition",
+                    "type": "Value",
+                    "id": "01aa8406-a1f2-43ec-9cf6-82966451ff25",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "430465a3-f84f-400a-9532-9541482ae0a4",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6988cb1a-3971-4639-afc8-f7bb1ff760ea",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TapPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
