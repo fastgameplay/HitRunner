@@ -13,15 +13,16 @@ public class PistolIKController : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        // Set IK weights
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, ikWeight);
+        animator.SetIKRotationWeight(AvatarIKGoal.RightHand, ikWeight);
+
     }
 
     private void OnAnimatorIK(int layerIndex)
     {
         if (animator)
         {
-            // Set IK weights
-            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, ikWeight);
-            animator.SetIKRotationWeight(AvatarIKGoal.RightHand, ikWeight);
 
             // Calculate IK target position and rotation
             Vector3 targetPosition = aimingTarget.position;
