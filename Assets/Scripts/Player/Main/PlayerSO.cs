@@ -4,9 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player ID", menuName = "Data/Player")]
 public class PlayerSO : ScriptableObject
 {
-    [SerializeField] int _maxHealth;
-    [SerializeField] int _speed;
-
+    public float BulletRange => _bulletRange;
+    [SerializeField] float _bulletRange;
+    public float BulletSpeed => _bulletSpeed;
+    [SerializeField] float _bulletSpeed;
+    
     public PlayerEventSystem Events;
 
    

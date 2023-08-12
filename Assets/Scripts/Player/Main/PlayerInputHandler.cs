@@ -23,14 +23,10 @@ public class PlayerInputHandler : PlayerBased
     private void OnTap(InputAction.CallbackContext value){
         
         player.ID.Events.OnTapPosition?.Invoke(_tapScreenPosition);
-        Debug.Log(_tapScreenPosition + " Tap Invoked");
-        Debug.Log(value.ReadValue<Vector2>());
 
     }
     private void OnTapPositionPerformed(InputAction.CallbackContext value){
         _tapScreenPosition = value.ReadValue<Vector2>();
-        Debug.Log(_tapScreenPosition + " Registerd");
-
     }
     
 }

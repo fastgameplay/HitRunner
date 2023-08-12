@@ -19,7 +19,6 @@ public class PlayerAim : PlayerBased
             StopCoroutine(_aimCoroutine);
         }
         _targetBodyAim.position = _targetGunAim.position = targetPoint;
-        player.ID.Events.OnShoot?.Invoke();
         _aimCoroutine = StartCoroutine(ResetPositionAsync(RESET_DELAY));
     }
     private void ResetPosition(){
@@ -27,6 +26,12 @@ public class PlayerAim : PlayerBased
         _targetGunAim.localPosition = _gunTargetInitialPos;
     }
     private IEnumerator ResetPositionAsync(float time ){
+        //Wait 3 frames before shoot;
+        yield return null;
+        yield return null;
+        yield return null;
+        player.ID.Events.OnShoot?.Invoke();
+        
         yield return new WaitForSeconds(time);
         ResetPosition();
     }
