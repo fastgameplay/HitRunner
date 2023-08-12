@@ -2,33 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(PlayerAim))]
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting : PlayerBased
 {   
     // [SerializeField] private Gun _currentGun;
-    [SerializeField] WayPoint _currentPoint;
-    private PlayerAim _currentAim;
-    
-    
-    void Update(){
-        if(Input.GetMouseButtonDown(0)){
-            Debug.Log("Shoot");
-            OnShoot();
-        }
-    }
+    // [SerializeField] WayPoint _currentPoint;
+    // private PlayerAim _currentAim;
+    private Camera _mainCamera;
+    private Plane plane = new Plane(Vector3.up, -1.5f);
     private void Awake(){
-        _currentAim = GetComponent<PlayerAim>();
+        base.Awake();
+        _mainCamera = Camera.main;
+        // _currentAim = GetComponent<PlayerAim>();
     }
-    public void OnShoot(){
-        if(_currentPoint.IsEmpty) return;
-        Vector3 aimPoint = _currentPoint.GetActivePosition();
-        _currentAim.Aim(aimPoint);
-        //TODO: TEST ONLY DELETE AFTER!
-        _currentPoint.DestroyFirstEnemy();
+  
+    void OnEnable(){
+        player.ID.Event.OnTapPosition += TapRegistered;
     }
-    //GetTargetsFromPoint
-    //GetNearestTarget
-    //On Tap Input
-    //PlayerAim.Aim(Target)
-    //Gun.Shoot();
+    void OnDisable(){
+        player.ID.Event.OnTapPosition -= TapRegistered;
+    }
 
+    private void TapRegistered(Vector3 screenPosition){
+        Ray ray = _mainCamera.ScreenPointToRay(screenPosition);
+        if(plane.Raycast(ray, out float distance)){
+            player.ID.Event.OnAim?.Invoke(ray.GetPoint(distance));
+            return;
+        }
+
+    }
 }
