@@ -19,7 +19,7 @@ public class PlayerAim : PlayerBased
             StopCoroutine(_aimCoroutine);
         }
         _targetBodyAim.position = _targetGunAim.position = targetPoint;
-        player.ID.Event.OnShoot?.Invoke();
+        player.ID.Events.OnShoot?.Invoke();
         _aimCoroutine = StartCoroutine(ResetPositionAsync(RESET_DELAY));
     }
     private void ResetPosition(){
@@ -31,9 +31,9 @@ public class PlayerAim : PlayerBased
         ResetPosition();
     }
     private void OnEnable(){
-        player.ID.Event.OnAim += Aim;
+        player.ID.Events.OnAim += Aim;
     }
     private void OnDisable(){
-        player.ID.Event.OnAim -= Aim;
+        player.ID.Events.OnAim -= Aim;
     }
 }

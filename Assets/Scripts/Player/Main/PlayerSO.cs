@@ -7,7 +7,7 @@ public class PlayerSO : ScriptableObject
     [SerializeField] int _maxHealth;
     [SerializeField] int _speed;
 
-    public PlayerEventSystem Event;
+    public PlayerEventSystem Events;
 
    
 }

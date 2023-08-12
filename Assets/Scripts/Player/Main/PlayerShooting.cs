@@ -9,16 +9,16 @@ public class PlayerShooting : PlayerBased
     }
   
     void OnEnable(){
-        player.ID.Event.OnTapPosition += TapRegistered;
+        player.ID.Events.OnTapPosition += TapRegistered;
     }
     void OnDisable(){
-        player.ID.Event.OnTapPosition -= TapRegistered;
+        player.ID.Events.OnTapPosition -= TapRegistered;
     }
 
     private void TapRegistered(Vector3 screenPosition){
         Ray ray = _mainCamera.ScreenPointToRay(screenPosition);
         if(plane.Raycast(ray, out float distance)){
-            player.ID.Event.OnAim?.Invoke(ray.GetPoint(distance));
+            player.ID.Events.OnAim?.Invoke(ray.GetPoint(distance));
             return;
         }
 

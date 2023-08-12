@@ -84,7 +84,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""7388f1e9-8dd9-43c3-b720-bcca57f62196"",
                     ""path"": ""<Touchscreen>/primaryTouch/position"",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""TapPosition"",
