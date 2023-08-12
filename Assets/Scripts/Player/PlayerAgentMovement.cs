@@ -27,21 +27,21 @@ public class PlayerAgentMovement : MonoBehaviour
         _currentAgent = GetComponent<NavMeshAgent>();
         _thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
         _currentAgent.updateRotation = false;
-        InvokeRepeating("CheckDestination", TIME_BETWEEN_EXECUTION, TIMER_DELAY);
     }
     void Update(){
         if(_isMoving == false) return;
+    
         _thirdPersonCharacter.Move(_currentAgent.desiredVelocity, false, false);
+        CheckDestination();
     }
 
     public void CheckDestination(){
-        Debug.Log($"IsMoving = {_isMoving}");
         if(_isMoving == false) return;
         if (_currentAgent.remainingDistance > _currentAgent.stoppingDistance) return;
         if (!_currentAgent.hasPath || _currentAgent.velocity.sqrMagnitude == 0f)
         {
             OnPathEndReached?.Invoke();
-            Debug.Log("REACHED PATH END");
+            _thirdPersonCharacter.StopAndFaceDirection(Vector3.zero);
             _isMoving = false;
         }
     }
