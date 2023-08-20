@@ -14,6 +14,9 @@ public class PlayerWeapon : PlayerBased
         if (Physics.Raycast(_spawnPosition.position, _spawnPosition.forward, out hit, player.ID.BulletRange, 128)){
             hitPoint = hit.point;
             _hitParticlePool.GetParticle().SetUp(hit.point,_spawnPosition);
+            if(hit.transform.TryGetComponent<IDamagable>(out IDamagable damagable)){
+                damagable.Damage(player.ID.BulletDamage);
+            }
         }
         else{
 

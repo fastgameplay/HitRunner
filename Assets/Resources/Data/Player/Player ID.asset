@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bulletRange: 10
   _bulletSpeed: 0.2
+  _bulletDamage: 80

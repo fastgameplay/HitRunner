@@ -14,7 +14,7 @@ public class PlayerCyclicMovement : MonoBehaviour
     private void Update()
     {
         if(Input.GetMouseButtonDown(0)){
-            _currentAgentMovement.Target = GetNextTarget().position;
+            // _currentAgentMovement.Target = GetNextTarget().position;
         }
     }
 
