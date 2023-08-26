@@ -14,7 +14,10 @@ public class LaserBullet : MonoBehaviour
         float correctedSpeed = speed * (Vector3.Distance(startPosition,hitPosition) / 5f);
         LeanTween.move(gameObject, hitPosition, correctedSpeed);
         LeanTween.scaleZ(gameObject, 0, correctedSpeed)
-            .setOnComplete( ()=> { _killAction.Invoke(this); } );
+            .setOnComplete( ()=> { 
+                
+                _killAction.Invoke(this); 
+            } );
         return this;
     }
     public void Init(Action<LaserBullet> killAction){
